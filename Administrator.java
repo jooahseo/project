@@ -3,35 +3,24 @@ import java.util.Scanner;
 public class Administrator {
 	
 	Scanner scanning= new Scanner(System.in);
-	private String[] items={"gumball","towel","chicken","pen","lotion"};
-	public String selection ="";
-	public String UserInput;
+	
+	public String itemInput;
+	public int numInput;
 	
 
-	public String PromptUser(){
-		System.out.printf("We have :");
-		for(int i=0; i<items.length; i++){
-			if(i==items.length-1 )
-				System.out.println(items[i]+".");
-			else
-			System.out.print(items[i]+",");
-		}
+	public void GameStart(){
 		
-			boolean contains= false;
-			while(contains!=true){
-				System.out.println("Please pick an item you want to guess:");
-				UserInput= scanning.nextLine();
-				for(int i=0; i<items.length;i++){
-					if(UserInput.equalsIgnoreCase(items[i])){
-						selection= items[i];
-						contains = true;
-					}
-				}
-				if(contains==false){
-					System.out.println("Your choice is not valid.");
-				}
-			}
-			System.out.printf("you choose : %s\n", selection);
-			return selection;
+		
+		System.out.println("Hello Admisitrator, Please Enter the type of item will be stored in the jar");
+		itemInput= scanning.nextLine();
+		
+		System.out.printf("What's the total number of %s can fit in the jar?", itemInput);
+		numInput= scanning.nextInt();
+		
+		Jar jar=new Jar(itemInput,numInput);
+		
+		jar.fill();
+		
 	}
+			
 }
